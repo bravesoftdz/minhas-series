@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>Sobre</h2>
+                    <form action="" method="post">
+                        <p class="lead">Editar Série</p>
+
+                        <div class="form-group">
+                            <label for="name">Nome da série</label>
+                            <input value="<%= serie.name %>" type="text" class="form-control" name="name" id="name" aria-describedby="nameHelp" placeholder="Informe o nome">
+                            <small id="nameHelp" class="form-text text-muted">Nome da série a ser salvo.</small>
+                            <% if (errors && errors.indexOf('name')>=0) { %>
+                                <small id="nameHelp" class="form-text text-muted">Por favor, digite o nome da série.</small>
+                            <% } %>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Situação:
+                            </label>
+                            <select class="form-control" name="status" id="status">
+                                <% labels.forEach( label => { %>
+                                    <option value="<%= label.id %>" <%= label.id === serie.status ? 'selected' : '' %>><%= label.name %></option>
+                                    <% }) %>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary">Salvar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <% include ../partials/footer %>
